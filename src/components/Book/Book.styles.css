@@ -1,0 +1,24 @@
+.book{
+    margin-bottom: 3rem;
+}
+
+.title{
+    color: #4a148c ;
+    font-size: 1.3rem;
+    text-align: center;
+}
+.author{
+    margin-right: 30%;
+}
+
+.like{
+    color: red;
+    fill: red;
+}
+p{
+    margin: 0;
+}
+
+.view-book{
+    width: 100%;
+}
