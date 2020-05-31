@@ -12,8 +12,9 @@
 }
 
 .like{
-    color: red;
+    /* color: red; */
     fill: red;
+    cursor: pointer;
 }
 p{
     margin: 0;

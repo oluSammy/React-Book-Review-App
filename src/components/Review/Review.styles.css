@@ -1,0 +1,26 @@
+.review-name{
+    font-size: 1.2rem;
+    color: #616161 ;
+}
+
+.rev{
+    padding: .8rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.review-name span{
+    font-size: 1rem;
+    color: #4527a0;
+}
+
+.review{
+    margin-top: -1.3rem;
+}
+
+.review-header{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    text-decoration: underline;
+    color: plum;
+}

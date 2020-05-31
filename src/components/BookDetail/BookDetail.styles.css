@@ -1,0 +1,40 @@
+.book-detail{
+    margin-top: 3rem;
+}
+
+.book-heading{
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    padding: .3rem 0;
+    border-radius: 4px;
+}
+
+.book-heading-2{    
+    font-size: 1.4rem;
+}
+
+.book-title-heading{
+    margin-right: 8rem;
+}
+
+.book-author-heading{
+    margin-right: 7rem;
+}
+
+.book-publisher-heading{
+    margin-right: 5.6rem;
+}
+
+.book-date-heading{
+    margin-right: 2rem;
+}
+
+.book-span{
+
+}
+
+.likes{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    margin-left: 70%;
+}
