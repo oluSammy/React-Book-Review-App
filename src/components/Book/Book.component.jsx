@@ -4,7 +4,7 @@ import './Book.styles.css'
 import { Link } from 'react-router-dom'
 
 const Book = () => (    
-    <Link to="/book">
+    <Link to="/book/hello">
         <div className="col s6 m4 l3 book">
             <div className="card">
                 <div className="card-image">
@@ -15,10 +15,9 @@ const Book = () => (
                 <p className="title">The Audacity of Hope</p>
                 <div>
                     <span className="author">Barack Obama</span> 
-                    <i class="far fa-heart like"/> <span> 2000</span>
+                    <i className="far fa-heart like"/> <span> 2000</span>
                 </div>
             </div>
-            <Link className="btn view-book purple darken-3">View Book</Link>
         </div>
     </Link>
         

@@ -4,7 +4,9 @@ import './BookDetail.styles.css'
 import AddReview from '../AddReview/AddReview.components'
 import Review from '../Review/Review.components';
 
-const BookDetail = () => (
+const BookDetail = (props) => {
+    const id = props.match.params.id
+    return(
     <div className="row book-detail">
         <div className="container">
             <div className="row">
@@ -16,7 +18,7 @@ const BookDetail = () => (
                     </div>
                 </div>
                 <div className="col s12 m6 l6 offset-m2 offset-l2">
-                    <h3 className="center book-heading  purple lighten-1 white-text">Book Description</h3>
+                    <h3 className="center book-heading  purple lighten-1 white-text">Book Description {id}</h3>
                     <p className="book-title">
                         <span className="book-heading-2 book-title-heading">TITLE:</span>
                         <span className="book-span">The Audacity Of Hope</span>
@@ -35,7 +37,7 @@ const BookDetail = () => (
                     </p>
 
                     <div>
-                        <p className="likes"> <i class="far fa-heart like"/> <span> 2000</span> Like</p>                    
+                        <p className="likes"> <i className="far fa-heart like"/> <span> 2000</span> Like</p>                    
                     </div>
                     <AddReview/>
                 </div>
@@ -53,6 +55,6 @@ const BookDetail = () => (
         </div>
     </div>
     </div>
-);
+)};
 
 export default BookDetail;
