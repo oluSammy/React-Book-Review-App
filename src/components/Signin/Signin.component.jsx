@@ -1,13 +1,14 @@
 import React from 'react';
 import './SignIn.styles.css';
 import { auth } from '../../firebase/firebase.utils';
-// import { Redirect } from 'react-router-dom'; 
+import { Redirect } from 'react-router-dom'; 
 
 class SignIn extends React.Component {
     
     state = {
         email: '',
-        password: ''
+        password: '',
+        redirect: null
     }
 
     handleChange = event => {
@@ -23,7 +24,7 @@ class SignIn extends React.Component {
         
         try{
             await auth.signInWithEmailAndPassword(email, password);
-            this.setState({email: '', password: ''});
+            this.setState({email: '', password: '', redirect: '/'});
         } catch (error) {
             console.log(error);
         }
@@ -31,6 +32,9 @@ class SignIn extends React.Component {
 
 
     render(){
+        if(this.state.redirect){
+            return <Redirect to={this.state.redirect} />
+        }
         return(
             <div className="row sign-in">
                 <div className="container">
