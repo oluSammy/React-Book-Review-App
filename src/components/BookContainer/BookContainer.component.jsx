@@ -1,20 +1,42 @@
-import React from 'react'
+import React from 'react';
 
 import Book from '../Book/Book.component';
 
-import './BookContainer.styles.css'
+import './BookContainer.styles.css';
 
-const BookContainer = () => (
-    <div className="row book-container">
-        <div className="container">
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        </div>
-    </div>
-);
+import { firestore } from "../../firebase/firebase.utils";
+import { connect } from 'react-redux';
 
-export default BookContainer;
+
+import { getBoosStartAsync } from '../../Redux/book/book.action';
+
+
+class BookContainer extends React.Component {
+     
+    async componentDidMount(){
+        this.props.getBooksFromFirestore();        
+    }
+    render(){
+        const {  firestoreBooks } = this.props;
+        
+        return(
+            <div className="row book-container">
+                <div className="container">
+                    {
+                        firestoreBooks ? firestoreBooks.map(book => <Book book = {book} key={book.title}/>) : <h1>Loading</h1>
+                    }
+                </div>
+            </div>
+        )
+    }
+};
+
+const mapDispatchToProps = dispatch => ({
+    getBooksFromFirestore: () => dispatch(getBoosStartAsync())
+});
+
+const mapStateToProps = ({book}) => ({
+    firestoreBooks: book.books
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookContainer);

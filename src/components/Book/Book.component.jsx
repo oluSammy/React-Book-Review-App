@@ -3,19 +3,19 @@ import './Book.styles.css'
 
 import { Link } from 'react-router-dom'
 
-const Book = () => (    
+const Book = ({book: {title, imgUrl, author, likes}}) => (        
     <Link to="/book/hello">
         <div className="col s6 m4 l3 book">
             <div className="card">
                 <div className="card-image">
-                    <img src={require(`../../assets/img/obama_book.jpg`)} alt="book"/>
+                    <img src={`${imgUrl}`} alt="book"/>
                 </div>
             </div>
             <div className="content">
-                <p className="title">The Audacity of Hope</p>
+                <p className="title">{title}</p>
                 <div>
-                    <span className="author">Barack Obama</span> 
-                    <i className="far fa-heart like"/> <span> 2000</span>
+                    <span className="author">{author}</span> 
+                    <i className="far fa-heart like"/> <span> {likes}</span>
                 </div>
             </div>
         </div>

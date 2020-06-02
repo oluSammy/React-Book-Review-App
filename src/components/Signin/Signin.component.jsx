@@ -8,7 +8,6 @@ class SignIn extends React.Component {
     state = {
         email: '',
         password: '',
-        redirect: null
     }
 
     handleChange = event => {
@@ -24,7 +23,7 @@ class SignIn extends React.Component {
         
         try{
             await auth.signInWithEmailAndPassword(email, password);
-            this.setState({email: '', password: '', redirect: '/'});
+            this.setState({email: '', password: ''});
         } catch (error) {
             console.log(error);
         }
