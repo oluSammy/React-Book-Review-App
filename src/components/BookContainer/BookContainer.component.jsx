@@ -4,16 +4,18 @@ import Book from '../Book/Book.component';
 
 import './BookContainer.styles.css';
 
-import { firestore } from "../../firebase/firebase.utils";
 import { connect } from 'react-redux';
 
 
 import { getBoosStartAsync } from '../../Redux/book/book.action';
 
+//selector
+import { selectBookSlice } from "../../Redux/book/book.selectors";
+
 
 class BookContainer extends React.Component {
      
-    async componentDidMount(){
+    componentDidMount(){
         this.props.getBooksFromFirestore();        
     }
     render(){
@@ -35,8 +37,11 @@ const mapDispatchToProps = dispatch => ({
     getBooksFromFirestore: () => dispatch(getBoosStartAsync())
 });
 
-const mapStateToProps = ({book}) => ({
-    firestoreBooks: book.books
+const mapStateToProps = (state) => ({
+    firestoreBooks: selectBookSlice(state)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookContainer);
+export default connect(
+    mapStateToProps, 
+    mapDispatchToProps)
+    (BookContainer);

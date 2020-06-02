@@ -17,6 +17,9 @@ import BookDetail from './components/BookDetail/bookDetail.components';
 //Redux Actions
 import { setCurrentUser } from './Redux/user/user.action';
 
+//selectors
+import { selectUserSlice } from "./Redux/user/user.selectors";
+
 class App extends React.Component {
 
 
@@ -55,8 +58,8 @@ const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
-const mapStateToProps = ({user}) => ({
-  currentUser: user.currentUser
+const mapStateToProps = state => ({
+  currentUser: selectUserSlice(state)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
