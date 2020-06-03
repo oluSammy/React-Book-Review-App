@@ -20,12 +20,13 @@ class BookContainer extends React.Component {
     }
     render(){
         const {  firestoreBooks } = this.props;
+        console.log(firestoreBooks);
         
         return(
             <div className="row book-container">
                 <div className="container">
                     {
-                        firestoreBooks ? firestoreBooks.map(book => <Book book = {book} key={book.title}/>) : <h1>Loading</h1>
+                        firestoreBooks ? firestoreBooks.map(book => <Book book = {book} key={book.id}/>) : <h1>Loading</h1>
                     }
                 </div>
             </div>

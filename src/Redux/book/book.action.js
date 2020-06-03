@@ -22,7 +22,7 @@ export const getBoosStartAsync = () => {
         try{
             let bookArray = [];
             const books = await firestore.collection("Book").get();
-            books.docs.map(doc => bookArray.push(doc.data()))
+            books.docs.map(doc => bookArray.push({data: doc.data(), id: doc.id}))
             dispatch(getBooksSuccess(bookArray));
         }catch(error){
             dispatch(getBooksSuccess(error));
