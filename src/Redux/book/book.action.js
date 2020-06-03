@@ -1,19 +1,19 @@
 import { bookActionTypes } from "./book.types";
 import { firestore } from '../../firebase/firebase.utils';
 
-export const getBookStart = () => ({
+const getBookStart = () => ({
     type: bookActionTypes.GET_BOOKS_START,
 });
 
-export const getBooksSuccess = books => ({
+const getBooksSuccess = books => ({
     type: bookActionTypes.GET_BOOKS_SUCCESS,
     payload: books
 });
 
-export const getBooksFailure = error => ({
+const getBooksFailure = error => ({
     type: bookActionTypes.GET_BOOKS_FAILURE,
     payload: error
-})
+});
 
 export const getBoosStartAsync = () => {
     return async dispatch => {
@@ -27,6 +27,5 @@ export const getBoosStartAsync = () => {
         }catch(error){
             dispatch(getBooksSuccess(error));
         }
-        // books.docs.map(doc => this.setState({books: [...this.state.books, doc.data()]})); //add books to state
     }
-}
+};     
