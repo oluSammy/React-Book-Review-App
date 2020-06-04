@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Review.styles.css';
 
-const Review = ({review: {details, name, date}}) => {    
+const Review = ({review: {details, name}}) => {    
     
     return(
         <div className="purple lighten-5 rev">

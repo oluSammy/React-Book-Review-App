@@ -25,7 +25,7 @@ export const getBoosStartAsync = () => {
             books.docs.map(doc => bookArray.push({data: doc.data(), id: doc.id}))
             dispatch(getBooksSuccess(bookArray));
         }catch(error){
-            dispatch(getBooksSuccess(error));
+            dispatch(getBooksFailure(error));
         }
     }
 };     

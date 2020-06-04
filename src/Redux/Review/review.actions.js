@@ -2,6 +2,8 @@ import { reviewActionTypes } from './review.types';
 
 import { firestore } from '../../firebase/firebase.utils';
 
+import firebase from "firebase/app";
+
 const getBookStart = () => ({
     type: reviewActionTypes.GET_REVIEWS_START
 });
@@ -16,6 +18,19 @@ const getBooksFailure = error => ({
     payload: error
 });
 
+const addReviewStart = () => ({
+    type: reviewActionTypes.ADD_REVIEW_START
+});
+
+const addReviewSuccess = () => ({
+    type: reviewActionTypes.ADD_REVIEW_SUCCESS
+});
+
+const addReviewFailure = error => ({
+    type: reviewActionTypes.ADD_REVIEW_FAILURE,
+    payload: error
+})
+
 export const getReviewsAsync = (id) => {
     return async dispatch => {
         dispatch(getBookStart());
@@ -23,14 +38,27 @@ export const getReviewsAsync = (id) => {
         try{
             const reviews = await firestore.collection('Book').doc(id);
             reviews.onSnapshot(doc => {
-                console.log(doc.data().reviews)
                 dispatch(getBooksSuccess(doc.data().reviews));
             }
           );
             
         } catch (err){
             dispatch(getBooksFailure(err));
-            console.log(err);
+        }
+    }
+};
+
+export const addReviewAsync = (id, review) => {
+    return async dispatch => {
+        try{
+            dispatch(addReviewStart())
+            const updateRef = firestore.collection('Book').doc(id);
+            await updateRef.update({
+                reviews: firebase.firestore.FieldValue.arrayUnion(review)
+            });
+            dispatch(addReviewSuccess());            
+        } catch(err){
+            dispatch(addReviewFailure(err));
         }
     }
 }

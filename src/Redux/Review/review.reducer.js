@@ -25,6 +25,23 @@ const reviewReducer = (state = INIT_STATE, action) => {
                 isFetching: false,
                 errorMessage: action.payload
             }
+        case reviewActionTypes.ADD_REVIEW_START:
+            return {
+                ...state,
+                isSending: true,
+            }
+        case reviewActionTypes.ADD_REVIEW_SUCCESS:
+            return {
+                ...state,
+                isSending: false,
+            }
+        case reviewActionTypes.ADD_REVIEW_FAILURE:{
+            return {
+                ...state,
+                isSending: false,
+                errorSendMessage: action.payload
+            }
+        }
         default:
             return state;
 
