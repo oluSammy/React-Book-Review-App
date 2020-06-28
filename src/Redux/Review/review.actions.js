@@ -37,10 +37,8 @@ export const getReviewsAsync = (id) => {
 
         try{
             const reviewsRef =  firestore.collection('Book').doc(id);
-            await reviewsRef.onSnapshot(doc => {
-                dispatch(getBooksSuccess(doc.data().reviews));
-            }
-          );
+            let doc = await reviewsRef.onSnapshot();
+            dispatch(getBooksSuccess(doc.data().reviews));
             
         } catch (err){
             dispatch(getBooksFailure(err));

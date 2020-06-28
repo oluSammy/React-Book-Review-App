@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 import { getReviewsAsync } from '../../Redux/Review/review.actions';
 
-import { selectReviewsSlice } from '../../Redux/Review/review.selectors';
+import { selectReviewsSlice } from '../../Redux/Review/review.selectors'; 
 
 class BookDetail extends React.Component{
     componentDidMount(){
@@ -62,7 +62,9 @@ class BookDetail extends React.Component{
                 <div className="col s12 m12 l7">
                 <h3 className="center book-heading  purple lighten-1 white-text">Reviews</h3>
                     {
-                        this.props.firestoreReviews ? this.props.firestoreReviews.map(review => <Review key={review.details} review={review}/>) : null
+                        this.props.firestoreReviews ? 
+                            this.props.firestoreReviews.map(review => <Review key={review.details} review={review}/>) : 
+                            null
                     }
                     
                     
